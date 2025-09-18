@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expert security, privacy, and AI governance consulting from an experienced former FTC technologist-counsel.">
+    <title>Possibility Inventors - Security, Privacy & AI Governance Strategy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2563eb;
+            --accent-color: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --brand-color: #7c3aed;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-white);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--brand-color);
+            text-decoration: none;
+            font-family: 'Georgia', serif;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(120deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .profile-photo-container {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border: 4px solid white;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .credentials-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transform: rotate(0deg);
+        }
+
+        .credentials-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .stat {
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: block;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            background-color: var(--bg-white);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .value-prop {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .value-prop:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-prop-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-prop h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .value-prop p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            background-color: var(--bg-light);
+        }
+
+        .services-categories {
+            display: grid;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-category {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-item {
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateX(5px);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .service-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 4rem 2rem;
+            background-color: var(--bg-white);
+        }
+
+        .experience-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .highlight-item {
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            background: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-label {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Subject Matter Expertise Section */
+        .expertise {
+            padding: 2rem 1rem;
+            background-color: var(--bg-light);
+        }
+
+        .expertise-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 0rem auto;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .expertise-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            font-weight: 500;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .expertise-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--secondary-color);
+        }
+
+
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact .section-title::after {
+            background-color: white;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsive */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .profile-photo-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Scroll animations */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Possibility Inventors</a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#story">My Story</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content fade-in-up">
+                <h1>Security, Privacy, & Responsible AI: Strategic Guidance & Practical Expertise</h1>
+                <p class="subtitle">Bridging the gap between security, privacy, & AI domains.</p>
+            <p>I'm Aaron Alva, a technologist & attorney who provides expert advising services and helps organizations launch and mature their security, privacy, and AI governance programs. With 10 years at the FTC as a lead technical advisor and a stint as Counsel to the Director, <span class="hero-highlight">I was instrumental in driving the FTC's approach to privacy & security enforcement</span> while advancing many high-profile consumer protection & competition cases.</p>
+
+            <p>I excel at balancing risks across multiple domains (security, privacy, AI) by translating complex technical, policy, & regulatory considerations into actionable knowledge for decision makers.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Schedule Consultation</span>
+                        <span>→</span>
+                    </a>
+                    <a href="#services" class="btn btn-secondary">
+                        <span>Explore Services</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-photo-container">
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCADIAMgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDh67S8/wCPqP8A65p/6CK4uu0vP+PqP/rmn/oIrehozDEFu2oKt7d+F4LmB0USQ3FuGjZSBwwJyOT+VdM3ibRLJF0jU7T+x5o1AZ4wqxSY9k4zn17/AF4GiiuiNWaTsY8qHT+AbcyK+neJILdlORGzBoz6Z4znPJ/nScXOkX2nxRR/adLlC6lcTAhEQ5LkkDJ5GBjqDjriiipve+hVzm7ltO8RjTl0eMCOOT/S3B3Fh5bZGcAgjdgcf3qST/iqpbW0isUsNKZgIllUh8EEOx4ByQcAcdPxoor0Yx91ea+bMm9SVvhxH5pBvG2dh5fNSr8PbEjJvJAPcCiiszRaD1+Hmm4z9sm/75FQ/wDCu9PL8Xso9PlooqZKLWqLVr3sdVp/hjTtKaOaJGluI1Ki4mO58H0zWzRRXOWSUUUUDCiiigAooooAKKKKACiiigDPvvDuj6jO09zYxtKwy0i5Vj9SOtR2ng/QbKdJ4bBFkU5VizNj8zRRQK7Lb+HdGkJLabbEnnOwVLaeGtDsnWS10y1jdejBAcUUUBdl+SytJxiW1hkH+0gNQDQ9JH/MNtP+/QoooDUUaHpI/wCYbaf9+hThpGmj/mH2v/foUUUBqKNI00f8w+1/79CnDTtOH/MPtr/vwKKKA1FGn6cP+Yfbf9+BSjT7Qf8ALvF/3yKKKBXY8Wlqv3beIfRBT/Kj/uL+VFFAXYeVH/cX8qPKj/uL+VFFAXDyo/7i/lR5Uf8AcX8qKKAuHlR/3F/Kjyo/7i/lRRQFw8qP+4v5UeVH/cX8qKKAuHlR/wBxfyo8qP8AuL+VFFAXDyo/7i/lRRRQB/SxRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB//Z" alt="Aaron Alva" class="profile-photo">
+                </div>
+                <div class="credentials-card">
+                    <h3>Track Record</h3>
+                    <div class="stat">
+                        <span class="stat-number">$5 Billion+</span>
+                        <span>FTC settlements driven</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">Technical+Legal</span>
+                        <span>expertise</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">10 Years</span>
+                        <span>as regulator/enforcer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about scroll-fade" id="about">
+        <div class="section-container">
+            <h2 class="section-title">Why Work With Possibility Inventors?</h2>
+            <div class="about-grid">
+                <div class="value-prop">
+                    <div class="value-prop-icon"></div>
+                    <h3>Regulator Perspective</h3>
+                    <p>Having shaped enforcement at the FTC, I bring unique insights to both sides of regulatory matters— helping companies build new programs and providing expert analysis for enforcement actions. My track record includes high-profile cases such as Facebook ($5B settlement), Amazon Alexa, GoodRx, BetterHelp, Marriott, GoDaddy, Broadcom, Mobilewalla, Venmo, Vizio, Avast, Rite Aid, Zoom, and many more.</p>
+                </div>
+                <div class="value-prop">
+                    <div class="value-prop-icon"></div>
+                    <h3>Technical + Legal Translation</h3>
+                    <p>I speak both "engineer" and "lawyer," bridging the gap between technical teams and legal requirements. I have a JD, Masters in Information Management, maintain my CISSP credentials, and have published peer-reviewed security & privacy research.</p>
+                </div>
+                <div class="value-prop">
+                    <div class="value-prop-icon"></div>
+                    <h3>Strategic Vision</h3>
+                    <p>I strive to further security & privacy for all and enable responsible AI innovation. I can help with developing strategic approaches to getting ahead of emerging issues and solving challenging multi-domain problems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services scroll-fade" id="services">
+        <div class="section-container">
+            <h2 class="section-title">How We Can Help</h2>
+            <div class="services-categories">
+                
+                <!-- Core Programs -->
+                <div class="service-category">
+                    <h3 class="category-title">Startups / Small-Mid Size Businesses: Build a Foundation</h3>
+                    <div class="services-grid">
+                        <div class="service-item">
+                            <h4>Security & Privacy Program Launch</h4>
+                            <p>Zero-to-one program development with strategic roadmaps, policy frameworks, and team culture building—starting where you are now.</p>
+                        </div>
+                        <div class="service-item">
+                            <h4>AI Governance Foundation</h4>
+                            <p>Establish AI governance frameworks, model oversight processes, acceptable use policies, AI training, and alignment with emerging regulations.</p>
+                        </div>
+                        <div class="service-item">
+                            <h4>Fractional Chief Data or Privacy Officer</h4>
+                            <p>Develop processes for handling data, create roadmaps, cultivate strategic advantages while balancing risks and growing customer trust.</p>
+                        </div>
+                        <div class="service-item">
+                            <h4>Due Diligence</h4>
+                            <p>Risk assessment for late-stage startups with material risk identification and remediation roadmaps.</p>
+                        </div>
+                        <div class="service-item">
+                            <h4>Practical AI Implementation</h4>
+                            <p>Apply frameworks like OWASP to advance AI security capabilities through structured processes, vendor questioning, and safety mapping.</p>
+                        </div> 
+                    </div>
+                </div>
+
+                <!-- Strategic Advisory -->
+                <div class="service-category">
+                    <h3 class="category-title">Public & Private Enforcers: Technical + Legal Expertise</h3>
+                    <div class="services-grid">
+                        
+                        <div class="service-item">
+                            <h4>Expert Consulting</h4>
+                            <p>Provide consulting expert services using technical & regulatory expertise. Industry standard analysis, strategic litigation support, and more.</p>
+                        </div>
+                        <div class="service-item">
+                            <h4>Strategic Legal Counsel</h4>
+                            <p>Investigative or litigation strategy, expertise translating past regulatory actions to current matters, domain-specific advisory services (e.g. security, privacy, AI). Ask about additional legal counsel arrangements.</p>
+                        </div>
+                        <div class="service-item">
+                            <h4>Technologist Capability Building</h4>
+                            <p>Develop methods & processes for effective working relationships between technical experts and attorneys.</p>
+
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Specialized Services possible future section -->
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story scroll-fade" id="story" style="padding: 4rem 2rem; background: linear-gradient(to bottom, white, var(--bg-light));">
+        <div class="section-container">
+            <h2 class="section-title">Behind the Headlines: My Journey</h2>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div style="margin-bottom: 3rem; font-size: 1.15rem; line-height: 1.9; color: var(--text-primary);">
+                    <p style="margin-bottom: 1.5rem;">For a decade, I worked behind the scenes on cases that made national headlines. When Facebook agreed to a $5 billion settlement, when Amazon changed how Alexa handles children's data, when Rite Aid dismantled its facial recognition system—I was there, shaping the technical requirements and legal strategies that drove these outcomes.</p>
+                    
+                    <p style="margin-bottom: 1.5rem;">Early in my career, I identified a large gap: security was seen as something requiring technical solutions. Yet legal and policy approaches to improve security were left largely unnoticed. After formative years working on advanced cybersecurity research projects at the Pacific Northwest National Laboratory, I decided to take a dual approach to my education. I completed a joint Masters in Information Management and JD supported by the Nation Science Foundation.</p>
+                    
+                    <p style="margin-bottom: 1.5rem;">This combination—technical depth with legal training—made me uniquely valuable at the FTC, where I became a leader and advisor across multiple adminstrations on ways the FTC could use its legal authorities to protect consumers and ensure competitive markets.</p> 
+
+                    <p style="margin-bottom: 1.5rem;">I investigated services that shared sensitive health data to advertisers unbeknownst to users. I initiated enforcement actions against location data brokers that sold location that that could be used to trace individuals to sensitive locations. I worked to ensure companies cannot undermine critical security safeguards such as multifactor authentication. I evaluated anticompetitive practices like exclusivity agreements that could limit fair competition. And much more. Each investigation reinforced my belief that we need people who can translate between worlds—technical and legal, regulatory and business, protection and innovation.</p>
+                    
+                    <p style="margin-bottom: 1.5rem;">As the first technologist to hold the position of Counsel to the Director of Consumer Protection, I played a pivotal role in identifying potential harms arising from emerging technologies. By translating technical complexities into actionable insights, I provided valuable guidance to decision-makers that meaningfully improved security & privacy for individuals. I sought to provide clarity to businesses by helping detail specific unfair practices. And I'm proud of my work crafting and helping negotiate novel remedies tailored to addressing problematic conduct while providing routes for continued innovation.</p>
+                    
+                    <p style="margin-bottom: 2rem; font-weight: 500; color: var(--primary-color); font-size: 1.2rem; padding: 1.5rem; background: white; border-left: 4px solid var(--secondary-color); border-radius: 8px;">Now, I'm stepping from behind the scenes to help directly. Whether you're a startup building privacy or security into your DNA, a regulator needed a translator between technical and legal concepts, or a firm needing expertise for complex litigation, I bring a unique perspective from the front lines of tech regulation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subject Matter Expertise Section -->
+    <section class="expertise scroll-fade" id="expertise">
+        <div class="section-container">
+            <h4 class="section-title">Subject Areas</h4>
+            <p class="expertise-intro">
+                My experience spans a wide range of complex and novel issues in privacy, security, and AI. Throughout my career—including through 50+ public FTC matters—I have a proven track record of creating groundbreaking work and providing critical expertise on matters that impact businesses and individuals.
+            </p>
+            <div class="expertise-grid">
+                <div class="expertise-item">Kids Privacy & Safety</div>
+                <div class="expertise-item">Geolocation & Location Privacy</div>
+                <div class="expertise-item">Health & Biometric Privacy</div>
+                <div class="expertise-item">API Security</div>
+                <div class="expertise-item">Dark Patterns</div>
+                <div class="expertise-item">Browsing & Ad Tech Privacy</div>
+                <div class="expertise-item">Data Retention & Minimization</div>
+                <div class="expertise-item">Driver & Connected Car Privacy</div>
+                <div class="expertise-item">Platform Harms</div>
+                <div class="expertise-item">AI Governance</div>
+                <div class="expertise-item">Data Breach Investigations</div>
+                <div class="expertise-item">Antitrust & Competition in Tech</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <h2 class="section-title">Ready to Deepen Your Efforts?</h2>
+            <div class="contact-content">
+                <p>Whether you're a startup launching your first security or privacy program, or an enforcer diving into complex technical issues, let's discuss how our strategic expertise can help.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <a href="mailto:alva@hey.com">alva@hey.com</a>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem;">
+                    <a href="mailto:alva@hey.com?subject=Strategic%20Advisory%20Inquiry" class="btn btn-primary" style="background-color: white; color: var(--primary-color);">
+                        <span>Schedule Strategic Discussion</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Possibility Inventors, LLC.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    if(navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuToggle.textContent = '☰';
+                    }
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Scroll reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-fade').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
